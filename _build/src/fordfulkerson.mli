@@ -37,9 +37,9 @@ val find_path2: residualGraph -> 'a -> Graph.id -> Graph.id -> Graph.id list opt
 
 (*Algorithme principal*)
 val fordFulkerson: int Graph.graph -> Graph.id -> Graph.id -> int Graph.graph
-
-
 val run_algorithm: residualGraph -> int -> int -> flowGraph
+
+
 
 (*Au secours*)
 val update_path: flowGraph -> path -> int -> flowGraph
