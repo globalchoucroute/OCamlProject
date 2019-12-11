@@ -1,6 +1,10 @@
 digraph finite_state_machine {
- node [shape = circle];
-3 -> 4 [ label = "5" ];
+ 
+  rankdir=n; 
+
+  size="10" 
+  
+  node [shape = circle]; 0 1 2 3 4 53 -> 4 [ label = "5" ];
 3 -> 2 [ label = "2" ];
 3 -> 0 [ label = "10" ];
 3 -> 1 [ label = "1" ];

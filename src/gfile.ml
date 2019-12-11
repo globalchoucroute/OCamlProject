@@ -99,7 +99,12 @@ let export file gr =
   let outgraphdot = open_out file in
 
   (*Fichier dans lequel écrire*)
-  fprintf outgraphdot "digraph finite_state_machine {\n node [shape = circle];\n";
+  fprintf outgraphdot "digraph finite_state_machine {\n 
+  rankdir=n; \n
+  size=\"10\" \n  
+  node [shape = circle];";
+
+  n_iter_sorted gr (fun id -> fprintf outgraphdot " %d" id) ;
 
   (*Écriture des arcs*)
   e_iter gr (fun id id2 label -> fprintf outgraphdot "%d -> %d [ label = \"%s\" ];\n" id id2 label);
