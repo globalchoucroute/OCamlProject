@@ -25,13 +25,15 @@ let () =
   let graph = from_file infile in
   let intgraph = gmap graph int_of_string in
 
-  let pathtest = reverse(find_path (gmap graph int_of_string) [] 0 5) in 
+  let pathtest = find_path2 (gmap graph int_of_string) 0 5 in 
   let desomedpath = desome pathtest in
   (* Rewrite the graph that has been read. *)
   let () = (*write_file outfile (gmap (add_arc (gmap graph int_of_string) 0 1 2) string_of_int)*) 
     (*write_file outfile (gmap (incr2 intgraph desomedpath (get_lowest_weight intgraph desomedpath)) string_of_int)*)
-    createDotFile (run_algorithm intgraph 0 5) outfile
-    (*export outfile graph*) in
+    export outfile (gmap (fordFulkerson intgraph 0 5) string_of_int)
+    (*export outfile (gmap (incr2 intgraph desomedpath (get_lowest_weight intgraph desomedpath)) string_of_int)*)
+    (*export outfile graph*) 
+    in
 
   ()
 

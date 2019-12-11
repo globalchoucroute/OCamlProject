@@ -7,6 +7,8 @@ type residualGraph = int Graph.graph
 
 (*Remplace une list option par une liste*)
 val desome: 'a list option -> 'a list
+
+
 val createDotFile: flowGraph -> string ->  unit
 (*Initialisation du graphe de flux pour l'affichage*)
 val flowGraphInit: residualGraph -> flowGraph
@@ -33,13 +35,10 @@ val reverse: 'a list option -> 'a list option
 val find_path: int graph -> id list -> id -> id -> path option
 
 (*Seconde version du find_path*)
-val find_path2: residualGraph -> 'a -> Graph.id -> Graph.id -> Graph.id list option
+val find_path2: int Graph.graph -> Graph.id -> Graph.id -> Graph.id list option
 
 (*Algorithme principal*)
 val fordFulkerson: int Graph.graph -> Graph.id -> Graph.id -> int Graph.graph
-val run_algorithm: residualGraph -> int -> int -> flowGraph
-
-
 
 (*Au secours*)
 val update_path: flowGraph -> path -> int -> flowGraph
