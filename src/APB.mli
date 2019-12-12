@@ -23,3 +23,6 @@ val getStudentInfo: string -> out_channel -> string list -> int -> unit
 
 (*Lit un fichier de données au format biparti et créé un fichier graphe associé*)
 val readFile: string -> string -> unit
+
+(*Affiche les associations entre les noms et les id des noeuds *)
+val displayConnections: string list -> unit

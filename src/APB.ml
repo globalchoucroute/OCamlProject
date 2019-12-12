@@ -86,4 +86,7 @@ let readFile path tmp_path =
   in read_lines 2 []; (*Encore une fois, on ne part pas de 0, car les indices 0 et 1 correspondent à la source et au puit*)
 
   close_out outfile;;
-                    
+       
+  (*Affiche les associations entre les noms et les id des noeuds *)
+  let displayConnections listOfElements =
+    List.iter (fun e -> Printf.printf "%s a pour id %d\n%!" e ((indexOf e (List.rev listOfElements))-2)) listOfElements

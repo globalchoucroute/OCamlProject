@@ -47,6 +47,8 @@ let () =
   (* Create a temporary transfer file *)
   let temporaryFile = "datasheet.tmp" in
 
+  let listOfElements = namesToId infile in
+
   (* Read the data from the data file, stores it in the temporary file *)
   readFile infile temporaryFile;
 
@@ -60,7 +62,10 @@ let () =
   let exportedGraph = makeFlowGraph intgraph (fordFulkerson intgraph source sink) in
   
   (* Rewrite the graph that has been read *)
-  let () = export outfile exportedGraph in
+  let () = export outfile (exportedGraph);
+  displayConnections listOfElements; 
+  in
+
   
 ()
 
