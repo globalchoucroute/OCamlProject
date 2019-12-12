@@ -3,6 +3,9 @@ open Tools
 
 type path = id list
 
+(*Remplace les valeurs d'arcs du graphe pour un affichage propre*)
+val makeFlowGraph: int Graph.graph -> int Graph.graph -> string Graph.graph
+
 (*Remplace une list option par une liste*)
 val desome: 'a list option -> 'a list
 

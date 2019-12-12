@@ -3,8 +3,14 @@ open Tools
 open Gfile
 
 type path = id list
-type flowGraph = (int*int) Graph.graph
-type residualGraph = int Graph.graph
+
+(*Remplace les valeurs d'arcs du graphe pour un affichage propre*)
+let makeFlowGraph startingGraph fordgraph =
+  let aux finalGraph id1 id2 lbl = match (find_arc fordgraph id2 id1) with
+    | None -> new_arc finalGraph id1 id2 ("0/"^(string_of_int (lbl)))
+    | Some label -> new_arc finalGraph id1 id2 ((string_of_int label)^"/"^(string_of_int (lbl)))
+    in e_fold startingGraph aux (clone_nodes startingGraph)
+  
 
 (*Remplace une list option par une liste*)
 let desome = function
