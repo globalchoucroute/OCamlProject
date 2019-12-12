@@ -1,6 +1,7 @@
 open Gfile
 open Tools
 open Fordfulkerson
+open APB
 let () =
 
   (* Check the number of command-line arguments *)
@@ -16,24 +17,50 @@ let () =
   let infile = Sys.argv.(1)
   and outfile = Sys.argv.(4)
 
-  (* These command-line arguments are not used for the moment. *)
-  and _source = int_of_string Sys.argv.(2)
-  and _sink = int_of_string Sys.argv.(3)
+  (* Get the source and the sink from the command line.
+  If one uses the medium project, then these must be set at 0 and 1. *)
+  and source = int_of_string Sys.argv.(2)
+  and sink = int_of_string Sys.argv.(3)
   in
 
+(********************************************)
+(* Section dedicated to the minimal project *)
+  (*
   (* Open file *)
   let graph = from_file infile in
+
+  (*Convert the graph to an int Graph.graph*)
   let intgraph = gmap graph int_of_string in
 
-  let pathtest = find_path2 (gmap graph int_of_string) 0 5 in 
-  let desomedpath = desome pathtest in
+  (*Apply the ford-fulkerson algorithm to the graph*)
+  let exportedGraph = makeFlowGraph intgraph (fordFulkerson intgraph source sink) in
+  
   (* Rewrite the graph that has been read. *)
-  let () = (*write_file outfile (gmap (add_arc (gmap graph int_of_string) 0 1 2) string_of_int)*) 
-    (*write_file outfile (gmap (incr2 intgraph desomedpath (get_lowest_weight intgraph desomedpath)) string_of_int)*)
-    export outfile (gmap (fordFulkerson intgraph 0 5) string_of_int)
-    (*export outfile (gmap (incr2 intgraph desomedpath (get_lowest_weight intgraph desomedpath)) string_of_int)*)
-    (*export outfile graph*) 
+  let () = export outfile exportedGraph;
     in
 
-  ()
+  ()*)
+(*******************************************)
+(* Section dedicated to the medium project *)
+  
+  
+  (* Create a temporary transfer file *)
+  let temporaryFile = "datasheet.tmp" in
+
+  (* Read the data from the data file, stores it in the temporary file *)
+  readFile infile temporaryFile;
+
+  (* Open file *)
+  let graph = from_file temporaryFile in
+
+  (* Convert the graph to an int Graph.graph *)
+  let intgraph = gmap graph int_of_string in
+
+  (* Apply the ford-fulkerson algorithm to the graph *)
+  let exportedGraph = makeFlowGraph intgraph (fordFulkerson intgraph source sink) in
+  
+  (* Rewrite the graph that has been read *)
+  let () = export outfile exportedGraph in
+  
+()
 

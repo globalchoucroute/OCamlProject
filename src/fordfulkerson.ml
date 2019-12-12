@@ -18,7 +18,7 @@ let desome = function
   | Some l -> l;;
 
 (*Affichage simple des différents noeuds du chemin*)
-let display_path path = Printf.printf "Path :";
+let display_path path = Printf.printf "Chemin emprunté :";
   List.iter (fun i -> Printf.printf " %d%!" i) (desome path); Printf.printf"\n";;
 
 (*Récupération de la valeur maximale d'incrémentation*)
@@ -75,5 +75,5 @@ let find_path2 gr id1 id2 =
 let rec fordFulkerson gr id1 id2 = match find_path2 gr id1 id2 with
   | None -> gr
   | Some l -> display_path (Some l);
-  Printf.printf "Valeur incrémentée : %d %!" (get_lowest_weight gr l);
+  Printf.printf "Valeur incrémentée : %d \n%!" (get_lowest_weight gr l);
   fordFulkerson (incr2 gr l (get_lowest_weight gr l)) id1 id2;  

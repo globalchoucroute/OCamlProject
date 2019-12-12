@@ -105,6 +105,7 @@ let export file gr =
   node [shape = circle];";
 
   n_iter_sorted gr (fun id -> fprintf outgraphdot " %d" id) ;
+  fprintf outgraphdot ";\n";
 
   (*Écriture des arcs*)
   e_iter gr (fun id id2 label -> fprintf outgraphdot "%d -> %d [ label = \"%s\" ];\n" id id2 label);

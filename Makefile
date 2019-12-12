@@ -1,6 +1,6 @@
 
 main:
-	ocamlbuild ftest.native
+	ocamlbuild -pkg str ftest.native
 
 format:
 	ocp-indent --inplace src/*
