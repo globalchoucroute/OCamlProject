@@ -9,6 +9,7 @@ To run the minimal project, you first have to decomment the section dedicated to
 Then, run the following commands on a terminal at the root of the project file :
 
 make
+
 ./ftest.native graphs/infile source sink graphs/outfile
 
 Where infile is the source graph for the algorithm, and outfile will be the graph exported in dot format.
@@ -18,6 +19,7 @@ To run the medium project, it's the exact opposite: decomment the medium project
 Then, run the following commands on a terminal at the root of the project file :
 
 make
+
 ./ftest.native data/data 0 1 graphs/outfile
 
 Where data is the data file containing the school and students info, and outfile will be the graph exported in dot format.
